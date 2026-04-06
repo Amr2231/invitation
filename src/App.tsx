@@ -1,7 +1,7 @@
 import { useState } from "react";
 import EnvelopePage from "./components/EnvelopePage";
 import MainPage from "./pages/MainPage";
-import MusicPlayer from "./components/MusicPlayer";
+import MusicPlayer from "./components/Musicplayer.tsx";
 
 export default function App() {
   const [entered, setEntered] = useState(false);

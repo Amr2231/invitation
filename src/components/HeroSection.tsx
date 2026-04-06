@@ -10,7 +10,7 @@ export default function HeroSection() {
   const { ref: heroRef, revealed } = useReveal();
   const { scrollYProgress } = useScroll();
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 60 }, [
-    Autoplay({ delay: 5000, stopOnInteraction: false }),
+    Autoplay({ delay: 3000, stopOnInteraction: false }),
   ]);
   const [selectedIndex, setSelectedIndex] = useState(0);
   const y = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
@@ -20,7 +20,9 @@ export default function HeroSection() {
     const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
     emblaApi.on("select", onSelect);
     onSelect();
-    return () => emblaApi.off("select", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+    };
   }, [emblaApi]);
 
   return (
