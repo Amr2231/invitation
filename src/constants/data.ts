@@ -53,4 +53,4 @@ export const VENUE = {
 
 // song details
 export const SONG_URL =
-  "/Esseily & Sabren - We Akhyran (Ramadan 2026) - محمود العسيلي وصابرين - وأخيراً (مسلسل اتنين غيرنا).mp4";
+  "/Esseily & Sabren - We Akhyran (Ramadan 2026) - محمود العسيلي وصابرين - وأخيراً (مسلسل اتنين غيرنا).mp3";
