@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart } from "lucide-react";
-import { Music } from "lucide-react";
+import { Heart, Music } from "lucide-react";
 
 interface EnvelopePageProps {
   onEnter: () => void;
@@ -15,7 +14,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
   const [textVisible, setTextVisible] = useState(false);
   const [buttonVisible, setButtonVisible] = useState(false);
   const [visibleWords, setVisibleWords] = useState<number[]>([]);
-  const audioRef = useRef<HTMLAudioElement>(null);
 
   useEffect(() => {
     const t1 = setTimeout(() => setEnvelopeOpen(true), 800);
@@ -37,11 +35,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
     });
   }, [textVisible]);
 
-  const handleOpen = () => {
-    if (audioRef.current) audioRef.current.play().catch(() => {});
-    onEnter();
-  };
-
   const petals = Array.from({ length: 12 }, (_, i) => ({
     left: `${(i * 8 + 5) % 95}%`,
     animationDuration: `${5 + (i % 5) * 1.6}s`,
@@ -51,10 +44,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
 
   return (
     <div className="min-h-screen bg-beige-warm flex items-center justify-center overflow-hidden relative">
-      <audio ref={audioRef} loop preload="none">
-        <source src="/song.mp3" type="audio/mpeg" />
-      </audio>
-
       {petals.map((style, i) => (
         <div key={i} className="petal" style={{ ...style, top: "-20px" }} />
       ))}
@@ -165,7 +154,7 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
                     transition={{ duration: 0.6, ease: "backOut" }}
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.97 }}
-                    onClick={handleOpen}
+                    onClick={onEnter}
                     className="sparkle-btn flex items-center gap-2 px-7 py-3 rounded-full font-serif-display font-medium text-white relative overflow-hidden animate-glow-pulse"
                     style={{
                       background:

@@ -9,7 +9,11 @@ const ThankYouSection = lazy(() => import("../components/Thankyousection"));
 const Footer = lazy(() => import("../components/Footer"));
 const MusicPlayer = lazy(() => import("../components/Musicplayer"));
 
-export default function MainPage() {
+interface MainPageProps {
+  audioRef: React.RefObject<HTMLAudioElement | null>;
+}
+
+export default function MainPage({ audioRef }: MainPageProps) {
   return (
     <div className="relative">
       <FloatingPetals />
@@ -20,7 +24,7 @@ export default function MainPage() {
         <LocationSection />
         <ThankYouSection />
         <Footer />
-        <MusicPlayer />
+        <MusicPlayer audioRef={audioRef} />
       </Suspense>
     </div>
   );
