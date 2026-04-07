@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { m, useScroll, useTransform } from "framer-motion";
 import { Heart } from "lucide-react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
@@ -41,12 +41,17 @@ export default function HeroSection() {
               key={index}
               className="min-w-full h-full relative flex-shrink-0"
             >
-              <motion.div style={{ y }} className="absolute inset-0">
+              <m.div style={{ y }} className="absolute inset-0">
                 <picture>
                   <source media="(max-width: 768px)" srcSet={slide.mobile} />
                   <img
                     src={slide.desktop}
                     className="w-full h-full object-bottom object-cover"
+                    width={1920}
+                    height={1080}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    fetchPriority={index === 0 ? "high" : "auto"}
+                    decoding="async"
                     style={{
                       opacity: 0.55,
                       filter: "saturate(1.1) contrast(1.05)",
@@ -60,7 +65,7 @@ export default function HeroSection() {
                       "linear-gradient(to bottom, rgba(26,14,5,0.5), rgba(26,14,5,0.9))",
                   }}
                 />
-              </motion.div>
+              </m.div>
             </div>
           ))}
         </div>
@@ -81,7 +86,7 @@ export default function HeroSection() {
 
       {/* Content */}
       <div className="relative text-center px-4" style={{ zIndex: 3 }}>
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: -20 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 0.2 }}
@@ -97,9 +102,9 @@ export default function HeroSection() {
           >
             {COUPLE.tagline}
           </span>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={revealed ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
@@ -112,12 +117,12 @@ export default function HeroSection() {
           </h1>
           <div className="flex items-center justify-center gap-4 my-2">
             <div className="gold-divider flex-1" style={{ maxWidth: 120 }} />
-            <motion.div
+            <m.div
               animate={{ scale: [1, 1.2, 1] }}
               transition={{ duration: 1.5, repeat: Infinity }}
             >
               <Heart size={28} style={{ fill: "#c4845a", stroke: "#c4845a" }} />
-            </motion.div>
+            </m.div>
             <div className="gold-divider flex-1" style={{ maxWidth: 120 }} />
           </div>
           <h1
@@ -126,9 +131,9 @@ export default function HeroSection() {
           >
             {COUPLE.name2}
           </h1>
-        </motion.div>
+        </m.div>
 
-        <motion.p
+        <m.p
           initial={{ opacity: 0, y: 20 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 1 }}
@@ -140,9 +145,9 @@ export default function HeroSection() {
           }}
         >
           {COUPLE.subtitle}
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 1, delay: 1.6 }}
@@ -160,14 +165,14 @@ export default function HeroSection() {
             </span>
             <div className="gold-divider w-16" />
           </div>
-          <motion.div
+          <m.div
             animate={{ y: [0, 6, 0] }}
             transition={{ duration: 1.5, repeat: Infinity }}
             className="mt-2"
           >
             ↓
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       </div>
     </section>
   );

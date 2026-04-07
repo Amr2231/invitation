@@ -1,29 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Heart, Music } from "lucide-react";
+import { Heart } from "lucide-react";
+import { Music } from "lucide-react";
 
-// interface for props
 interface EnvelopePageProps {
   onEnter: () => void;
 }
 
-// song url and text
-const SONG_URL =
-  "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
 const words = ["Welcome", "To", "Our", "Engagement", "Celebration"];
 
-// envelope page component
 export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
-  // hooks
   const [envelopeOpen, setEnvelopeOpen] = useState(false);
   const [cardVisible, setCardVisible] = useState(false);
   const [textVisible, setTextVisible] = useState(false);
   const [buttonVisible, setButtonVisible] = useState(false);
-  const [audioStarted, setAudioStarted] = useState(false);
   const [visibleWords, setVisibleWords] = useState<number[]>([]);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  // animate envelope opening and card appearance
   useEffect(() => {
     const t1 = setTimeout(() => setEnvelopeOpen(true), 800);
     const t2 = setTimeout(() => setCardVisible(true), 1800);
@@ -37,52 +30,35 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
     };
   }, []);
 
-  // animate text word by word
   useEffect(() => {
     if (!textVisible) return;
     words.forEach((_, i) => {
-      setTimeout(() => {
-        setVisibleWords((prev) => [...prev, i]);
-      }, i * 400);
+      setTimeout(() => setVisibleWords((prev) => [...prev, i]), i * 400);
     });
   }, [textVisible]);
 
-  // handle open button click
   const handleOpen = () => {
-    if (audioRef.current && !audioStarted) {
-      audioRef.current.play().catch(() => {});
-      setAudioStarted(true);
-    }
+    if (audioRef.current) audioRef.current.play().catch(() => {});
     onEnter();
   };
 
-  // petal animation data
-  const petals = Array.from({ length: 12 }, (_, i) => i);
+  const petals = Array.from({ length: 12 }, (_, i) => ({
+    left: `${(i * 8 + 5) % 95}%`,
+    animationDuration: `${5 + (i % 5) * 1.6}s`,
+    animationDelay: `${(i * 0.5) % 6}s`,
+    transform: `scale(${0.5 + (i % 3) * 0.5})`,
+  }));
 
-  // render
   return (
     <div className="min-h-screen bg-beige-warm flex items-center justify-center overflow-hidden relative">
-      {/* audio */}
-      <audio ref={audioRef} loop preload="auto">
-        <source src={SONG_URL} type="audio/mpeg" />
+      <audio ref={audioRef} loop preload="none">
+        <source src="/song.mp3" type="audio/mpeg" />
       </audio>
 
-      {/* petals */}
-      {petals.map((i) => (
-        <div
-          key={i}
-          className="petal"
-          style={{
-            left: `${Math.random() * 100}%`,
-            top: `-20px`,
-            animationDuration: `${5 + Math.random() * 8}s`,
-            animationDelay: `${Math.random() * 6}s`,
-            transform: `scale(${0.5 + Math.random() * 1.5})`,
-          }}
-        />
+      {petals.map((style, i) => (
+        <div key={i} className="petal" style={{ ...style, top: "-20px" }} />
       ))}
 
-      {/* envelope */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <motion.div
@@ -106,7 +82,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
         className="envelope-container flex flex-col items-center"
         style={{ zIndex: 10 }}
       >
-        {/* card */}
         <AnimatePresence>
           {cardVisible && (
             <motion.div
@@ -216,7 +191,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
           className="relative"
           style={{ width: "340px", height: "240px" }}
         >
-          {/* Background */}
           <div
             className="absolute inset-0 rounded-2xl shadow-2xl"
             style={{
@@ -243,7 +217,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
             className="absolute inset-0 flex items-center justify-center"
             style={{ zIndex: 6 }}
           >
-            {/* Heart */}
             <motion.div
               className="font-script text-amber-700/60 text-5xl"
               animate={{ scale: [1, 1.05, 1] }}
@@ -252,7 +225,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
               ♡
             </motion.div>
           </div>
-          {/* Envelope Flap */}
           <motion.div
             className="absolute left-0 right-0"
             style={{
@@ -268,7 +240,6 @@ export default function EnvelopePage({ onEnter }: EnvelopePageProps) {
             animate={envelopeOpen ? { rotateX: -160 } : { rotateX: 0 }}
             transition={{ duration: 1.2, ease: [0.25, 0.46, 0.45, 0.94] }}
           >
-            {/* Flap shadow */}
             <div
               className="absolute inset-0"
               style={{

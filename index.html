@@ -2,9 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React + TS</title>
+    <meta name="theme-color" content="#1a0e05" />
+    <title>Adham & Nour — Engagement</title>
+
+    <!-- Preconnect لـ Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- 
+      display=optional بدل swap:
+      - swap  → بيرسم الخط الاحتياطي أول، وبعدين بيبدله لما الخط يتحمل = CLS
+      - optional → بيدي الخط فرصة صغيرة جداً، لو مش جاهز بيستخدم الـ fallback ومش بيبدّل = zero CLS
+    -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=IM+Fell+English:ital@0;1&display=optional"
+      rel="stylesheet"
+    />
+
+    <!-- Preload الخط الأهم مباشرة عشان يتحمل في الـ optional window -->
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href="https://fonts.gstatic.com/s/parisienne/v21/RWmMoKWR9v21iW0g2I-hLTMCqA.woff2"
+      crossorigin
+    />
+
+    <!-- Preload أول صورة hero -->
+    <link
+      rel="preload"
+      as="image"
+      href="/hero.webp"
+      fetchpriority="high"
+      type="image/webp"
+    />
   </head>
   <body>
     <div id="root"></div>

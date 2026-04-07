@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { useReveal } from "../hooks/useReveal";
 import { ENGAGEMENT_DATE } from "../constants/data";
 
-// helper function
 function getTimeLeft() {
-  // Calculate time left until engagement date
   const now = new Date();
   const diff = ENGAGEMENT_DATE.getTime() - now.getTime();
   if (diff <= 0)
@@ -19,19 +17,15 @@ function getTimeLeft() {
   };
 }
 
-// component
 export default function CountdownSection() {
-  // hooks
   const { ref, revealed } = useReveal();
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
 
-  // update time left every second
   useEffect(() => {
     const interval = setInterval(() => setTimeLeft(getTimeLeft()), 1000);
     return () => clearInterval(interval);
   }, []);
 
-  // dummy data
   const units = [
     { label: "Days", value: timeLeft.days },
     { label: "Hours", value: timeLeft.hours },
@@ -39,7 +33,6 @@ export default function CountdownSection() {
     { label: "Seconds", value: timeLeft.seconds },
   ];
 
-  // render
   return (
     <section
       ref={ref}
@@ -48,13 +41,11 @@ export default function CountdownSection() {
         background: "linear-gradient(180deg, #1a0e05 0%, #2d1a0a 100%)",
       }}
     >
-      {/* Text */}
       <div
         className="max-w-4xl mx-auto px-6 text-center relative"
         style={{ zIndex: 2 }}
       >
-        {/* Title */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 25 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -76,12 +67,11 @@ export default function CountdownSection() {
             Our Special Day
           </h2>
           <div className="gold-divider w-48 mx-auto mt-4" />
-        </motion.div>
+        </m.div>
 
-        {/* Countdown */}
         <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
           {units.map((unit, i) => (
-            <motion.div
+            <m.div
               key={unit.label}
               initial={{ opacity: 0, scale: 0.7 }}
               animate={revealed ? { opacity: 1, scale: 1 } : {}}
@@ -92,7 +82,6 @@ export default function CountdownSection() {
               }}
               className="flex flex-col items-center"
             >
-              {/* Card */}
               <div
                 className="card-glass rounded-2xl flex items-center justify-center relative overflow-hidden hover-lift"
                 style={{
@@ -105,8 +94,7 @@ export default function CountdownSection() {
                   backdropFilter: "blur(12px)",
                 }}
               >
-                {/* Value */}
-                <motion.span
+                <m.span
                   key={unit.value}
                   initial={{ y: -15, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -118,9 +106,8 @@ export default function CountdownSection() {
                   }}
                 >
                   {String(unit.value).padStart(2, "0")}
-                </motion.span>
+                </m.span>
               </div>
-              {/* Label */}
               <p
                 className="font-serif-display mt-3"
                 style={{
@@ -132,12 +119,11 @@ export default function CountdownSection() {
               >
                 {unit.label}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
 
-        {/* Date */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={revealed ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
@@ -149,7 +135,7 @@ export default function CountdownSection() {
           >
             Saturday, April 19th, 2025 — 7:00 PM
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

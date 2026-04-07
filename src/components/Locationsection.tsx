@@ -1,14 +1,11 @@
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { useReveal } from "../hooks/useReveal";
 import { VENUE } from "../constants/data";
 
-// component
 export default function LocationSection() {
-  // hook
   const { ref, revealed } = useReveal();
 
-  // render
   return (
     <section
       ref={ref}
@@ -17,9 +14,8 @@ export default function LocationSection() {
         background: "linear-gradient(180deg, #f9ede0 0%, #f5e6d0 100%)",
       }}
     >
-      {/* Text */}
       <div className="max-w-5xl mx-auto px-6">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 30 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -47,10 +43,9 @@ export default function LocationSection() {
           >
             {VENUE.name}, {VENUE.city}
           </p>
-        </motion.div>
+        </m.div>
 
-        {/* Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={revealed ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.9, delay: 0.3 }}
@@ -60,7 +55,6 @@ export default function LocationSection() {
             border: "2px solid rgba(201, 169, 110, 0.4)",
           }}
         >
-          {/* Venue */}
           <div
             className="flex items-center gap-3 px-6 py-4"
             style={{ borderBottom: "1px solid rgba(201, 169, 110, 0.3)" }}
@@ -87,9 +81,9 @@ export default function LocationSection() {
               title="Venue Location"
             />
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.6 }}
@@ -110,7 +104,7 @@ export default function LocationSection() {
             <MapPin size={16} />
             Open in Google Maps
           </a>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

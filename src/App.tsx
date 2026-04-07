@@ -1,22 +1,18 @@
 import { useState } from "react";
+import { LazyMotion, domAnimation } from "framer-motion";
 import EnvelopePage from "./components/EnvelopePage";
 import MainPage from "./pages/MainPage";
-import MusicPlayer from "./components/Musicplayer.tsx";
 
 export default function App() {
   const [entered, setEntered] = useState(false);
-  const [musicStarted, setMusicStarted] = useState(false);
-
-  const handleEnter = () => {
-    setMusicStarted(true); // autoplay allowed
-    setEntered(true);
-  };
 
   return (
-    <>
-      {!entered ? <EnvelopePage onEnter={handleEnter} /> : <MainPage />}
-      {/* music player */}
-      {musicStarted && <MusicPlayer />}
-    </>
+    <LazyMotion features={domAnimation}>
+      {entered ? (
+        <MainPage />
+      ) : (
+        <EnvelopePage onEnter={() => setEntered(true)} />
+      )}
+    </LazyMotion>
   );
 }

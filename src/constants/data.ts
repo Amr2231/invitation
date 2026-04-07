@@ -1,7 +1,8 @@
-import { Calendar, Clock, MapPin } from "lucide-react";
 import { createElement } from "react";
+import { Calendar } from "lucide-react";
+import { Clock } from "lucide-react";
+import { MapPin } from "lucide-react";
 
-// data for couple
 export const COUPLE = {
   name1: "Adham",
   name2: "Nour",
@@ -11,16 +12,13 @@ export const COUPLE = {
     "With hearts full of joy and gratitude, we invite you to share in our most precious moment. Your presence makes this celebration truly complete. Thank you for being a beautiful part of our love story.",
 };
 
-// event details
 export const ENGAGEMENT_DATE = new Date("2025-04-19T19:00:00");
 
-// hero section
 export const HERO_SLIDES = [
-  { desktop: "/hero.jpeg", mobile: "/hero-mobile.jpeg" },
-  { desktop: "/hero2.jpeg", mobile: "/hero2-mobile.jpeg" },
+  { desktop: "/hero.webp", mobile: "/hero-mobile.webp" },
+  { desktop: "/hero2.webp", mobile: "/hero2-mobile.webp" },
 ];
 
-// timeline events
 export const EVENT_DETAILS = [
   {
     icon: createElement(Calendar, { size: 20 }),
@@ -42,7 +40,6 @@ export const EVENT_DETAILS = [
   },
 ];
 
-// venue details
 export const VENUE = {
   name: "The Grand Crystal Hall",
   city: "Cairo, Egypt",
@@ -51,6 +48,5 @@ export const VENUE = {
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.99!2d31.1852!3d30.0663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458412d18b42c2f%3A0x79b10c4ddddbf3bb!2sCairo+Opera+House!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg",
 };
 
-// song details
 export const SONG_URL =
   "/Esseily & Sabren - We Akhyran (Ramadan 2026) - محمود العسيلي وصابرين - وأخيراً (مسلسل اتنين غيرنا).mp3";

@@ -1,16 +1,13 @@
-import { motion } from "framer-motion";
-import { Heart, Sparkles } from "lucide-react";
+import { m } from "framer-motion";
+import { Heart } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { useReveal } from "../hooks/useReveal";
 import { COUPLE } from "../constants/data";
 
-// component
 export default function ThankYouSection() {
-  // hooks
   const { ref, revealed } = useReveal();
 
-  // render
   return (
-    // Background gradient and padding
     <section
       ref={ref}
       className="py-28 relative overflow-hidden"
@@ -18,22 +15,19 @@ export default function ThankYouSection() {
         background: "linear-gradient(180deg, #f5e6d0 0%, #1a0e05 100%)",
       }}
     >
-      {/* Text */}
       <div
         className="max-w-3xl mx-auto px-6 text-center relative"
         style={{ zIndex: 2 }}
       >
-        {/* Animation */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={revealed ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.9, ease: "backOut" }}
           className="mb-8"
         >
-          {/* Icons */}
           <div className="flex justify-center gap-3 mb-4">
-            {[Heart, Sparkles, Heart].map((Icon, i) => (
-              <motion.div
+            {([Heart, Sparkles, Heart] as const).map((Icon, i) => (
+              <m.div
                 key={i}
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1.5, repeat: Infinity, delay: i * 0.3 }}
@@ -45,13 +39,12 @@ export default function ThankYouSection() {
                     stroke: i === 1 ? "#c9a96e" : "#c4845a",
                   }}
                 />
-              </motion.div>
+              </m.div>
             ))}
           </div>
-        </motion.div>
+        </m.div>
 
-        {/* Header */}
-        <motion.h2
+        <m.h2
           initial={{ opacity: 0, y: 30 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -59,10 +52,9 @@ export default function ThankYouSection() {
           style={{ fontSize: "clamp(2.5rem, 7vw, 5rem)", color: "#c9a96e" }}
         >
           Thank You
-        </motion.h2>
+        </m.h2>
 
-        {/* Quote and signature */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -92,7 +84,7 @@ export default function ThankYouSection() {
           >
             {COUPLE.name1} & {COUPLE.name2}
           </p>
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

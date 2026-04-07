@@ -4,19 +4,27 @@ import { SONG_URL } from "../constants/data";
 
 // component
 export default function MusicPlayer() {
-  // hooks
   const audioRef = useRef<HTMLAudioElement>(null);
   const [isPlaying, setIsPlaying] = useState(true);
 
-  // autoplay
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.currentTime = 60;
-    audio.play().catch(() => {});
+
+    const idleId = requestIdleCallback(() => {
+      audio.load();
+
+      const onCanPlay = () => {
+        audio.currentTime = 60;
+        audio.play().catch(() => {});
+      };
+
+      audio.addEventListener("canplay", onCanPlay, { once: true });
+    });
+
+    return () => cancelIdleCallback(idleId);
   }, []);
 
-  // toggle play/pause
   const toggle = () => {
     const audio = audioRef.current;
     if (!audio) return;
@@ -28,20 +36,16 @@ export default function MusicPlayer() {
     setIsPlaying((prev) => !prev);
   };
 
-  // render
   return (
     <>
-      {/* Music */}
-      <audio ref={audioRef} loop preload="auto">
-        <source src={SONG_URL} type="video/mp4" />
+      <audio ref={audioRef} loop preload="none">
+        <source src={SONG_URL} type="audio/mpeg" />
       </audio>
 
-      {/* Player */}
       <div
         className="fixed bottom-6 right-0 -translate-x-1/2 flex flex-col items-center gap-2"
         style={{ zIndex: 999 }}
       >
-        {/* Vinyl disc */}
         <motion.button
           onClick={toggle}
           whileHover={{ scale: 1.08 }}
@@ -58,7 +62,6 @@ export default function MusicPlayer() {
           }}
           aria-label={isPlaying ? "Pause" : "Play"}
         >
-          {/* Disc */}
           <motion.div
             animate={isPlaying ? { rotate: 360 } : { rotate: 0 }}
             transition={
@@ -91,7 +94,6 @@ export default function MusicPlayer() {
               />
             ))}
 
-            {/* Center label */}
             <div
               style={{
                 position: "absolute",
@@ -114,7 +116,6 @@ export default function MusicPlayer() {
               />
             </div>
 
-            {/* Glow pulse */}
             {isPlaying && (
               <motion.div
                 animate={{ opacity: [0.4, 0, 0.4], scale: [1, 1.5, 1] }}
