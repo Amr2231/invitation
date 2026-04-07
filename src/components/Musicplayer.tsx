@@ -21,7 +21,7 @@ export default function MusicPlayer({ audioRef }: MusicPlayerProps) {
 
   return (
     <div
-      className="fixed bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      className="fixed bottom-6 right-0 -translate-x-1/2 flex flex-col items-center gap-2"
       style={{ zIndex: 999 }}
     >
       <m.button
