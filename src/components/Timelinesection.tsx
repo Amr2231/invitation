@@ -81,6 +81,18 @@ export default function TimelineSection() {
                       }}
                     >
                       {event.detail}
+                      
+                    </p>
+                    <p
+                      style={{
+                        fontSize: "0.85rem",
+                        color: "#8a6a4a",
+                        marginTop: "4px",
+                        fontStyle: "italic",
+                        width: "fit-content",
+                      }}
+                    >
+                      {event.mapsUrl}
                     </p>
                   </div>
                 </div>

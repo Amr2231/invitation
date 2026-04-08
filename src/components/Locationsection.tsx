@@ -31,7 +31,7 @@ export default function LocationSection() {
             className="font-serif-display font-bold"
             style={{ fontSize: "clamp(2rem, 5vw, 3rem)", color: "#3d2a15" }}
           >
-            Venue Location
+            kian Location
           </h2>
           <div className="gold-divider w-48 mx-auto mt-4 mb-6" />
           <p
@@ -41,7 +41,7 @@ export default function LocationSection() {
               fontSize: "1.05rem",
             }}
           >
-            {VENUE.name}, {VENUE.city}
+            {VENUE.name}
           </p>
         </m.div>
 
@@ -64,7 +64,7 @@ export default function LocationSection() {
               className="font-serif-display font-semibold"
               style={{ color: "#3d2a15", fontSize: "1rem" }}
             >
-              {VENUE.name}
+              {VENUE.nameCity}
             </span>
           </div>
           <div

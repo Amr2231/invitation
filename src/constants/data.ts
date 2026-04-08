@@ -12,39 +12,40 @@ export const COUPLE = {
     "With hearts full of joy and gratitude, we invite you to share in our most precious moment. Your presence makes this celebration truly complete. Thank you for being a beautiful part of our love story.",
 };
 
-export const ENGAGEMENT_DATE = new Date("2025-04-19T19:00:00");
+export const ENGAGEMENT_DATE = new Date("2026-05-02T14:00:00");
 
 export const HERO_SLIDES = [
-  { desktop: "/hero.webp", mobile: "/hero-mobile.webp" },
+  {  mobile: "/hero-mobile.webp" },
 ];
 
 export const EVENT_DETAILS = [
   {
     icon: createElement(Calendar, { size: 20 }),
     label: "Date",
-    value: "Saturday, April 19th, 2025",
+    value: "Saturday, May 5th, 2026",
     detail: "Mark your calendar",
   },
   {
     icon: createElement(Clock, { size: 20 }),
     label: "Time",
-    value: "7:00 PM",
-    detail: "Doors open at 6:30 PM",
+    value: "2:00 PM",
+    detail: "Doors open at 2:00 PM",
   },
   {
     icon: createElement(MapPin, { size: 20 }),
-    label: "Venue",
-    value: "The Grand Crystal Hall",
-    detail: "Cairo, Egypt",
+    label: "kian ",
+    value: "Kian hall",
+    detail: "Alexandria, Egypt",
+    mapsUrl: "نادي المعلمين أسفل كوبري سيدي جابر قاعة كيان بجوار قاعة قصر المعلمين",
   },
 ];
 
 export const VENUE = {
-  name: "The Grand Crystal Hall",
-  city: "Cairo, Egypt",
-  mapsUrl: "https://maps.google.com/?q=Cairo+Opera+House",
+  name: "نادي المعلمين أسفل كوبري سيدي جابر قاعة كيان بجوار قاعة قصر المعلمين",
+  nameCity: "Kian hall",
+  mapsUrl: "https://maps.app.goo.gl/VNvPhdWZ8kavLLLw5",
   embedUrl:
-    "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d110502.99!2d31.1852!3d30.0663!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1458412d18b42c2f%3A0x79b10c4ddddbf3bb!2sCairo+Opera+House!5e0!3m2!1sen!2seg!4v1700000000000!5m2!1sen!2seg",
+    "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3411.620205317234!2d29.943277799999997!3d31.231249999999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMzHCsDEzJzUyLjUiTiAyOcKwNTYnMzUuOCJF!5e0!3m2!1sen!2seg!4v1775678125861!5m2!1sen!2seg",
 };
 
 export const SONG_URL =

@@ -26,9 +26,9 @@ export default function HeroSection() {
             >
               <m.div style={{ y }} className="absolute inset-0">
                 <picture>
-                  <source media="(max-width: 768px)" srcSet={slide.mobile} />
+                  <source media="(max-width: 1300px)" srcSet={slide.mobile} />
                   <img
-                    src={slide.desktop}
+                    src={slide.mobile}
                     className="w-full h-full object-bottom object-cover"
                     width={1920}
                     height={1080}

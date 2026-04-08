@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { m } from "framer-motion";
+import { motion } from "framer-motion";
 import { useReveal } from "../hooks/useReveal";
 import { ENGAGEMENT_DATE } from "../constants/data";
 
@@ -45,7 +45,7 @@ export default function CountdownSection() {
         className="max-w-4xl mx-auto px-6 text-center relative"
         style={{ zIndex: 2 }}
       >
-        <m.div
+        <motion.div
           initial={{ opacity: 0, y: 25 }}
           animate={revealed ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
@@ -67,11 +67,11 @@ export default function CountdownSection() {
             Our Special Day
           </h2>
           <div className="gold-divider w-48 mx-auto mt-4" />
-        </m.div>
+        </motion.div>
 
         <div className="flex flex-wrap justify-center gap-4 sm:gap-8">
           {units.map((unit, i) => (
-            <m.div
+            <motion.div
               key={unit.label}
               initial={{ opacity: 0, scale: 0.7 }}
               animate={revealed ? { opacity: 1, scale: 1 } : {}}
@@ -94,7 +94,7 @@ export default function CountdownSection() {
                   backdropFilter: "blur(12px)",
                 }}
               >
-                <m.span
+                <motion.span
                   key={unit.value}
                   initial={{ y: -15, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
@@ -106,7 +106,7 @@ export default function CountdownSection() {
                   }}
                 >
                   {String(unit.value).padStart(2, "0")}
-                </m.span>
+                </motion.span>
               </div>
               <p
                 className="font-serif-display mt-3"
@@ -119,11 +119,11 @@ export default function CountdownSection() {
               >
                 {unit.label}
               </p>
-            </m.div>
+            </motion.div>
           ))}
         </div>
 
-        <m.div
+        <motion.div
           initial={{ opacity: 0 }}
           animate={revealed ? { opacity: 1 } : {}}
           transition={{ duration: 1, delay: 0.8 }}
@@ -133,9 +133,9 @@ export default function CountdownSection() {
             className="font-script"
             style={{ fontSize: "1.6rem", color: "rgba(201, 169, 110, 0.8)" }}
           >
-            Saturday, April 19th, 2025 — 7:00 PM
+            Saturday, May 2nd, 2026 — 2:00 PM
           </p>
-        </m.div>
+        </motion.div>
       </div>
     </section>
   );
