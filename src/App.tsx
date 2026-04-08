@@ -12,7 +12,7 @@ export default function App() {
   const handleEnter = () => {
     // المستخدم ضغط Open — ابدأ الأغنية فوراً لأن ده user interaction
     if (audioRef.current) {
-      audioRef.current.currentTime = 60;
+      audioRef.current.currentTime = 61;
       audioRef.current.play().catch(() => {});
     }
     setEntered(true);

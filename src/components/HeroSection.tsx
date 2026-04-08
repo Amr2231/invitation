@@ -34,7 +34,7 @@ export default function HeroSection() {
       }}
     >
       {/* Carousel */}
-      <div className="embla absolute inset-0 overflow-hidden" ref={emblaRef}>
+      <div className=" absolute inset-0 overflow-hidden" >
         <div className="flex h-full">
           {HERO_SLIDES.map((slide, index) => (
             <div
@@ -71,18 +71,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Dots */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
-        {HERO_SLIDES.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => emblaApi?.scrollTo(index)}
-            className={`w-3 h-3 rounded-full transition ${
-              selectedIndex === index ? "bg-[#c9a96e]" : "bg-white/40"
-            }`}
-          />
-        ))}
-      </div>
 
       {/* Content */}
       <div className="relative text-center px-4" style={{ zIndex: 3 }}>

@@ -16,7 +16,6 @@ export const ENGAGEMENT_DATE = new Date("2025-04-19T19:00:00");
 
 export const HERO_SLIDES = [
   { desktop: "/hero.webp", mobile: "/hero-mobile.webp" },
-  { desktop: "/hero2.webp", mobile: "/hero2-mobile.webp" },
 ];
 
 export const EVENT_DETAILS = [

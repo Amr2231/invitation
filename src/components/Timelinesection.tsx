@@ -8,7 +8,7 @@ export default function TimelineSection() {
   return (
     <section
       ref={ref}
-      className="py-24 relative overflow-hidden"
+      className="pt-24 relative overflow-hidden"
       style={{
         background: "linear-gradient(180deg, #fdf6ee 0%, #f9ede0 100%)",
       }}
@@ -30,7 +30,7 @@ export default function TimelineSection() {
             className="font-serif-display font-bold"
             style={{ fontSize: "clamp(2rem, 5vw, 3rem)", color: "#3d2a15" }}
           >
-            Event Details
+            Celebration Details
           </h2>
           <div className="gold-divider w-48 mx-auto mt-4" />
         </m.div>
@@ -102,6 +102,7 @@ export default function TimelineSection() {
             ))}
           </div>
         </div>
+        <div className="h-px bg-gradient-to-r from-transparent via-[#c9a96e] to-transparent mt-28 mb-0 "></div>
       </div>
     </section>
   );

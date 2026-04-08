@@ -29,8 +29,8 @@ export default function MusicPlayer({ audioRef }: MusicPlayerProps) {
         whileHover={{ scale: 1.08 }}
         whileTap={{ scale: 0.94 }}
         style={{
-          width: 64,
-          height: 64,
+          width: 43,
+          height: 43,
           borderRadius: "50%",
           border: "none",
           padding: 0,
