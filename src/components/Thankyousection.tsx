@@ -86,6 +86,7 @@ export default function ThankYouSection() {
           </p>
         </m.div>
       </div>
+      <div className="h-px bg-gradient-to-r from-transparent via-[#c9a96e72] to-transparent mt-28 relative top-4 mb-0 "></div>
     </section>
   );
 }
