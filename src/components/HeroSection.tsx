@@ -1,29 +1,12 @@
-import { useEffect, useState } from "react";
 import { m, useScroll, useTransform } from "framer-motion";
 import { Heart } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
-import Autoplay from "embla-carousel-autoplay";
 import { useReveal } from "../hooks/useReveal";
 import { COUPLE, HERO_SLIDES } from "../constants/data";
 
 export default function HeroSection() {
   const { ref: heroRef, revealed } = useReveal();
   const { scrollYProgress } = useScroll();
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, duration: 60 }, [
-    Autoplay({ delay: 3000, stopOnInteraction: false }),
-  ]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
   const y = useTransform(scrollYProgress, [0, 0.3], [0, -80]);
-
-  useEffect(() => {
-    if (!emblaApi) return;
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap());
-    emblaApi.on("select", onSelect);
-    onSelect();
-    return () => {
-      emblaApi.off("select", onSelect);
-    };
-  }, [emblaApi]);
 
   return (
     <section
@@ -34,7 +17,7 @@ export default function HeroSection() {
       }}
     >
       {/* Carousel */}
-      <div className=" absolute inset-0 overflow-hidden" >
+      <div className=" absolute inset-0 overflow-hidden">
         <div className="flex h-full">
           {HERO_SLIDES.map((slide, index) => (
             <div
@@ -70,7 +53,6 @@ export default function HeroSection() {
           ))}
         </div>
       </div>
-
 
       {/* Content */}
       <div className="relative text-center px-4" style={{ zIndex: 3 }}>
