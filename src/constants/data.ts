@@ -22,7 +22,7 @@ export const EVENT_DETAILS = [
   {
     icon: createElement(Calendar, { size: 20 }),
     label: "Date",
-    value: "Saturday, May 5th, 2026",
+    value: "Saturday, May 2th, 2026",
     detail: "Mark your calendar",
   },
   {
