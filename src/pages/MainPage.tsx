@@ -1,13 +1,11 @@
-import { lazy, Suspense } from "react";
 import FloatingPetals from "../components/Floatingpetals";
 import HeroSection from "../components/HeroSection";
-
-const CountdownSection = lazy(() => import("../components/Countdownsection"));
-const TimelineSection = lazy(() => import("../components/Timelinesection"));
-const LocationSection = lazy(() => import("../components/Locationsection"));
-const ThankYouSection = lazy(() => import("../components/Thankyousection"));
-const Footer = lazy(() => import("../components/Footer"));
-const MusicPlayer = lazy(() => import("../components/Musicplayer"));
+import CountdownSection from "../components/Countdownsection";
+import TimelineSection from "../components/Timelinesection";
+import LocationSection from "../components/Locationsection";
+import ThankYouSection from "../components/Thankyousection";
+import Footer from "../components/Footer";
+import MusicPlayer from "../components/Musicplayer";
 
 interface MainPageProps {
   audioRef: React.RefObject<HTMLAudioElement | null>;
@@ -18,14 +16,12 @@ export default function MainPage({ audioRef }: MainPageProps) {
     <div className="relative">
       <FloatingPetals />
       <HeroSection />
-      <Suspense fallback={null}>
-        <CountdownSection />
-        <TimelineSection />
-        <LocationSection />
-        <ThankYouSection />
-        <Footer />
-        <MusicPlayer audioRef={audioRef} />
-      </Suspense>
+      <CountdownSection />
+      <TimelineSection />
+      <LocationSection />
+      <ThankYouSection />
+      <Footer />
+      <MusicPlayer audioRef={audioRef} />
     </div>
   );
 }

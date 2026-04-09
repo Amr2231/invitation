@@ -6,11 +6,9 @@ import { SONG_URL } from "./constants/data";
 
 export default function App() {
   const [entered, setEntered] = useState(false);
-  // ref واحد للأغنية يتشارك بين EnvelopePage و MusicPlayer
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handleEnter = () => {
-    // المستخدم ضغط Open — ابدأ الأغنية فوراً لأن ده user interaction
     if (audioRef.current) {
       audioRef.current.currentTime = 104;
       audioRef.current.play().catch(() => {});
@@ -20,7 +18,6 @@ export default function App() {
 
   return (
     <LazyMotion features={domAnimation}>
-      {/* audio element موجود دايماً عشان preload="metadata" يشتغل من أول لحظة */}
       <audio ref={audioRef} loop preload="metadata">
         <source src={SONG_URL} type="audio/mpeg" />
       </audio>

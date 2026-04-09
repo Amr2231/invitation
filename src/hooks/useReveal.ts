@@ -11,7 +11,6 @@ export function useReveal(threshold = 0.15) {
     const el = ref.current;
     if (!el) return;
 
-    // create observer with threshold and callback to set revealed state
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) setRevealed(true);
